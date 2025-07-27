@@ -27,6 +27,7 @@ const HEADERS = [
 ];
 
 const SORTABLE = ['price', 'mc', 'liq', 'vol', 'age', 'tx'] as const;
+type SortableKey = typeof SORTABLE[number];
 
 export default function TokenTable({ category }: TokenTableProps) {
   const { loading, tokens, error } = useTokensLive(category);
@@ -79,12 +80,12 @@ export default function TokenTable({ category }: TokenTableProps) {
                 key={h.key}
                 className={`py-3 px-2 text-[#CFCFD4] text-xs uppercase font-semibold align-middle bg-[#15151A] 
                   select-none min-w-[95px]
-                  ${SORTABLE.includes(h.key as any) ? 'cursor-pointer hover:text-white transition-colors' : ''}`}
+                  ${SORTABLE.includes(h.key as SortableKey) ? 'cursor-pointer hover:text-white transition-colors' : ''}`}
                 scope="col"
                 onClick={() => {
-                  if (SORTABLE.includes(h.key as any)) {
+                  if (SORTABLE.includes(h.key as SortableKey)) {
                     if (sortKey === h.key) setSortDir(d => d === 'asc' ? 'desc' : 'asc');
-                    else { setSortKey(h.key as any); setSortDir('desc'); }
+                    else { setSortKey(h.key as SortableKey); setSortDir('desc'); }
                   }
                 }}
               >
@@ -100,7 +101,7 @@ export default function TokenTable({ category }: TokenTableProps) {
                       <TooltipContent>{h.tooltip}</TooltipContent>
                     </Tooltip>
                   )}
-                  {SORTABLE.includes(h.key as any) && (
+                  {SORTABLE.includes(h.key as SortableKey) && (
                     <span className="pl-1 text-xs">
                       {sortKey === h.key ? (sortDir === 'asc' ? '▲' : '▼') : ''}
                     </span>

@@ -53,7 +53,7 @@ npm run dev
 
 Open http://localhost:3000 to view in your browser.
 
-Live: View live on Vercel
+Live: [View live on Vercel](https://axiom-myapp-git-main-udaysutradhars-projects.vercel.app)
 
 Video Demo: YouTube (1–2 min walkthrough)
 

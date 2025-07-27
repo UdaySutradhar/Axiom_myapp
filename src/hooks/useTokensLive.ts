@@ -92,7 +92,7 @@ export function useTokensLive(category: string) {
       try {
         setTokens(getMockTokens(category));
         setLoading(false);
-      } catch (e) {
+      } catch {
         setError('Fetch failed');
         setLoading(false);
       }
